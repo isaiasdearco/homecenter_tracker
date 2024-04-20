@@ -76,6 +76,8 @@ DOWNLOADER_MIDDLEWARES = {
     "homecenter_tracker.middlewares.ScrapeOpsFakeUserAgentMiddleware": 540,
     "homecenter_tracker.middlewares.ScrapeOpsFakeBrowserHeaderAgentMiddleware": 543,
     "homecenter_tracker.middlewares.ProxyMiddleware": 350,
+    "scrapeops_scrapy.middleware.retry.RetryMiddleware": 550,
+    "scrapy.downloadermiddlewares.retry.RetryMiddleware": None,
 }
 
 # Enable or disable downloader middlewares
@@ -86,9 +88,9 @@ DOWNLOADER_MIDDLEWARES = {
 
 # Enable or disable extensions
 # See https://docs.scrapy.org/en/latest/topics/extensions.html
-# EXTENSIONS = {
-#    "scrapy.extensions.telnet.TelnetConsole": None,
-# }
+EXTENSIONS = {
+    "scrapeops_scrapy.extension.ScrapeOpsMonitor": 500,
+}
 
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
